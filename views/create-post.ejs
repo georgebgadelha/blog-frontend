@@ -1,0 +1,22 @@
+<%-include('partial/header')-%>
+<form action="/create-post" method="POST">
+    <div class="form-group">
+        <h1>Novo post</h1>
+        <label>Título</label>
+        <input type="text" class="form-control" name="postTitle">
+        <label>URL da Imagem</label>
+        <input type="text" class="form-control" name="postImageURL">
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id= "post-body" class="form-control" name="postDescription" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="postEmail">
+        <label>Senha</label>
+        <input type="text" class="form-control" name="postPassword">
+      </div>
+      <button type="submit">Publish</button>
+</form>
+<%-include('partial/footer')-%>

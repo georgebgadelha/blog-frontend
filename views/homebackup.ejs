@@ -1,0 +1,23 @@
+<%-include('partial/header')-%>
+<div id="posts-welcome">
+  <h1> Bem-vindo!</h1>
+  <p><%=description%></p>  
+</div>
+<div id="posts-home">
+  <div class="mainpost-card">
+    <h2><%=blogMainPost.title%></h2>
+    <h5><%=new Date(blogMainPost.date)%></h5>
+    <img src="data:image/png;base64,<%=imageData%>" alt="Post image">
+    <p><%=blogMainPost.description%></p>
+  </div>
+  <% blogPosts.forEach(function(post){%>
+    <h3><%=post.title%></h3>
+    <p><%=post.description.slice(0,100)%>...<a href="/posts/<%=post.title%>">>Read more</a></p>
+  <% });%>
+</div>
+<div id="pages-division">
+  <button><a href="/posts?page=<%=parseInt(page)-1%>">👈 Anterior</a></button>
+  <p>Páginas</p>
+  <button><a href="/posts?page=<%=parseInt(page)+parseInt(1)%>">Próxima 👉</a></button>
+</div>
+<%-include('partial/footer')-%>

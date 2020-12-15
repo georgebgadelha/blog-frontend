@@ -1,0 +1,43 @@
+<%-include('partial/header')-%>
+<%-include('partial/sidebar', { postsDate })-%>
+<%if(isHome){%>
+<div id="posts-welcome">
+  <h1> Bem-vindo!</h1>
+  <p><%=description%></p>  
+</div>
+<%}%>
+<div id="posts-home" style="margin-top: 4px;">
+  <div class="mainpost-card">
+  <div class="blog-card spring-fever">
+    <img src="data:image/png;base64,<%=imageData%>" alt="Post image">
+    <div class="title-content">
+      <h3><a href="#"><%=blogMainPost.title%></a></h3>
+    </div>
+    <div class="card-info">
+      <%=blogMainPost.description%> 
+      <a id="read-article" href="/posts/<%=blogMainPost.id%>">Ler post<span class="licon icon-arr icon-black"></span></a>
+    </div>
+    <div class="utility-info">
+      <ul class="utility-list">
+        <li><span class="licon icon-dat"></span><%=new Date(blogMainPost.date).toLocaleDateString('pt-br')%></li>
+      </ul>
+    </div>
+    <div class="gradient-overlay"></div>
+    <div class="color-overlay"></div>
+  </div>
+  </div>
+  <div class="other-posts">
+    <% blogPosts.forEach(function(post){%>
+      <div class="one-post-card">
+        <h3><%=post.title%></h3>
+        <p><%=post.description.slice(0,100)%>...<a href="/posts/<%=post.id%>">>Read more</a></p>
+      </div>
+    <% });%>
+  </div>
+</div>
+<div id="pages-division">
+  <button><a class="button-link" href="/posts?page=<%=parseInt(page)-1%>">👈 Anterior</a></button>
+  <p>Páginas</p>
+  <button><a class="button-link" href="/posts?page=<%=parseInt(page)+parseInt(1)%>">Próxima 👉</a></button>
+</div>
+<%-include('partial/footer')-%>
